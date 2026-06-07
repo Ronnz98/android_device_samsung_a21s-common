@@ -53,8 +53,15 @@
     <!-- TBD: When we have IMS service available for this device, enable this. -->
     <!-- <bool name="config_device_volte_available">true</bool> -->
     
-    <!-- Flag specifying whether VT is available on device -->
+    <!-- Tell the platform VoLTE and VT are available on this device -->
+    <bool name="config_carrier_volte_available">true</bool>
+    <bool name="config_device_volte_available">true</bool>
     <bool name="config_device_vt_available">true</bool>
+
+    <!-- IMS bearer management services -->
+    <string name="config_wlan_data_service_package">com.google.android.iwlan</string>
+    <string name="config_wlan_network_service_package">com.google.android.iwlan</string>
+    <string name="config_qualified_networks_service_package">com.android.telephony.qns</string>
     
     <!-- Set this to true to enable the platform's auto-power-save modes like doze and
          app standby.  These are not enabled by default because they require a standard
