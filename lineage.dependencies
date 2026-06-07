@@ -51,4 +51,9 @@
         "repository": "android_kernel_samsung_exynos850",
         "target_path": "kernel/samsung/exynos850"
     }
+    {
+    "repository": "amikhasenko/ims",
+    "target_path": "packages/apps/PhhIms",
+    "branch": "main"
+    }
 ]
