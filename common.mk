@@ -135,6 +135,27 @@ PRODUCT_PACKAGES += \
     libhwbinder \
     libhwbinder.vendor
 
+# IMS over Wi-Fi data service and network qualification service.
+# Required by the telephony framework even for VoLTE-only (no VoWiFi):
+# without these, DataServiceManager and NetworkRegistrationManager fail
+# to bind their WLAN handlers, which can cascade to IMS setup failures.
+PRODUCT_PACKAGES += \
+    Iwlan \
+    QualifiedNetworksService
+
+# Tell the framework VoLTE is available even if the carrier config says otherwise.
+# Required because carrier config defaults to volte_available=false for unknown carriers.
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.dbg.volte_avail_ovr=1 \
+    persist.dbg.wfc_avail_ovr=1 \
+    persist.dbg.allow_ims_off=1
+
+PRODUCT_PACKAGES += \
+    PhhIms
+
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/privapp-permissions-me.phh.ims.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-me.phh.ims.xml
+
 # init
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/init/fstab.exynos850:$(TARGET_COPY_OUT_RAMDISK)/fstab.exynos850 \
